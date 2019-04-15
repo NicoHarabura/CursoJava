@@ -7,35 +7,50 @@ public class Conta {
 	long cpf;
 	double saldo;
 
-	protected Conta(int numDaConta, String nomeDoCliente, long cpf, double saldo) {
+	public Conta() {
+
+	}
+
+	public Conta(int numDaConta, String nomeDoCliente, long cpf, double saldo) {
 		this.numDaConta = numDaConta;
 		this.nomeDoCliente = nomeDoCliente;
 		this.cpf = cpf;
 		this.saldo = saldo;
 	}
-	
-	
-	int getNumDaConta() {
+
+	public int getNumDaConta() {
 		return numDaConta;
 
 	}
 
-	String getNomeDoCliente() {
+	protected void setNumDaConta(int numDaConta) {
+		this.numDaConta = numDaConta;
+	}
+
+	public String getNomeDoCliente() {
 		return nomeDoCliente;
 
 	}
 
-	void setNomeDoCliente(String nomeDoCliente) {
+	public void setNomeDoCliente(String nomeDoCliente) {
 		this.nomeDoCliente = nomeDoCliente;
 	}
 
-	long getCpf() {
+	public long getCpf() {
 		return cpf;
 
 	}
 
-	double getSaldo() {
+	protected void setCpf(int cpf) {
+		this.cpf = cpf;
+	}
+
+	public double getSaldo() {
 		return saldo;
+	}
+
+	protected void setSaldo(double saldo) {
+		this.saldo = saldo;
 	}
 
 	public boolean sacar(double valorSacado) {
@@ -52,10 +67,14 @@ public class Conta {
 
 	public String toString() {
 
-		return "Nome do Cliente: " + nomeDoCliente 
-				+"\nNúmero da conta: "+ numDaConta 
-				+"\nCPF: "+ cpf 
-				+"\nSaldo: "+ saldo; 
+		return "\nNome do Cliente: " 
+		+ nomeDoCliente 
+		+ "\nNúmero da conta: " 
+		+ numDaConta 
+		+ "\nCPF: " 
+		+ cpf 
+		+ "\nSaldo: "
+		+ saldo;
 	}
 
 }
