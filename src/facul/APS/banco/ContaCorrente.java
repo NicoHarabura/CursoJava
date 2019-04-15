@@ -33,9 +33,10 @@ public class ContaCorrente extends Conta {
 		if (saldo <= 0 && valorSacado < limite) {
 			aux = saldo;
 			limite += aux;
+			return true;
 		}
 
-		return true;
+		return false;
 	}
 
 	@Override

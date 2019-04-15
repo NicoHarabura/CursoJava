@@ -55,6 +55,9 @@ public class Conta {
 
 	public boolean sacar(double valorSacado) {
 		saldo -= valorSacado;
+		if (saldo < 0){
+			return false;
+		}
 
 		return true;
 	}

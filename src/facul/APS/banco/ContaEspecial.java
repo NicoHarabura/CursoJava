@@ -27,7 +27,8 @@ public class ContaEspecial extends ContaCorrente{
 		this.nomeDoGerente = nomeDoGerente;
 	}
 	
-	public String toStringEspecial (){
+	@Override
+	public String toString (){
 		return super.toString() + "\nNome do gerente:" + nomeDoGerente;
 	}
 	
