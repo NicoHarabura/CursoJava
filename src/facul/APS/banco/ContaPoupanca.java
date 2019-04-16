@@ -11,7 +11,7 @@ public class ContaPoupanca extends Conta{
 	}
 	
 	public void calculaRendimento(double porcentagemRendimento){
-		saldo += saldo * porcentagemRendimento;
+		saldo += saldo * porcentagemRendimento/100;
 	}
 	
 	@Override

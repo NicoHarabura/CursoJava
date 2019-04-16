@@ -56,6 +56,7 @@ public class Conta {
 	public boolean sacar(double valorSacado) {
 		saldo -= valorSacado;
 		if (saldo < 0){
+			saldo = 0;
 			return false;
 		}
 
@@ -76,7 +77,7 @@ public class Conta {
 		+ numDaConta 
 		+ "\nCPF: " 
 		+ cpf 
-		+ "\nSaldo: "
+		+ "\nSaldo: R$"
 		+ saldo;
 	}
 

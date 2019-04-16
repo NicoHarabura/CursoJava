@@ -2,19 +2,17 @@ package facul.APS.banco;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.Scanner;
-
 
 public class GerenciarContas {
 
 	public static List<Conta> lista = new ArrayList<Conta>();
 
-	public void adicionarConta(Conta conta) {
+	public static void adicionarConta(Conta conta) {
 		lista.add(conta);
 	}
 
-	public boolean removerConta(int numDaConta) {
+	public static boolean removerConta(int numDaConta) {
 
 		for (Conta c : lista) {
 			if (c.getNumDaConta() == numDaConta) {
@@ -26,36 +24,27 @@ public class GerenciarContas {
 
 	}
 
-	public String buscarContasEspeciais() {
+	public static String buscarContasEspeciais() {
 
 		for (Conta c : lista) {
 			if (c instanceof ContaEspecial) {
-				return ((ContaEspecial) c).toString();
-
+				System.out.println(((ContaEspecial) c).toString());
 			}
 		}
-
-		return "\nNenhuma conta especial foi encontrada.";
+		return "";
 	}
 
-	public String buscarClientesUsandoLimite() {
+	public static String buscarClientesUsandoLimite() {
 
 		for (Conta c : lista) {
-			((ContaEspecial) c).usandoLimite();
-			((ContaCorrente) c).usandoLimite();
-			if (c instanceof ContaEspecial && ((ContaEspecial) c).usandoLimite()) {
-				((ContaEspecial) c).toString();
-			}
 			if (c instanceof ContaCorrente && ((ContaCorrente) c).usandoLimite()) {
-				((ContaCorrente) c).toString();
-				return "";
+				System.out.println(((ContaCorrente) c).toString());
 			}
 		}
-
-		return "\nNenhum cliente está usando o limite.";
+		return "";
 	}
 
-	public Conta buscarConta(int numeroConta) {
+	public static Conta buscarConta(int numeroConta) {
 		for (Conta c : lista) {
 			if (c.getNumDaConta() == numeroConta) {
 				return c;
@@ -65,16 +54,9 @@ public class GerenciarContas {
 
 	}
 
-	public boolean transferirValor(int numeroContaFonte, int numeroContaDestino, double valor) {
+	public static boolean transferirValor(int numeroContaFonte, int numeroContaDestino, double valor) {
 		for (Conta c : lista) {
-			if (c.getNumDaConta() == numeroContaFonte && c instanceof ContaCorrente) {
-				((ContaCorrente) c).sacar(valor);
-				for (Conta co : lista) {
-					if (co.getNumDaConta() == numeroContaDestino) {
-						return ((ContaCorrente) co).depositar(valor);
-					}
-				}
-			} else if (c.getNumDaConta() == numeroContaFonte) {
+			if (c.getNumDaConta() == numeroContaFonte) {
 				c.sacar(valor);
 				for (Conta co : lista) {
 					if (co.getNumDaConta() == numeroContaDestino) {
@@ -86,38 +68,45 @@ public class GerenciarContas {
 		return false;
 	}
 
-	public boolean sacar(int numeroConta, double valorSacado) {
+	public static boolean sacar(int numeroConta, double valorSacado) {
 		for (Conta c : lista) {
-			if (c.getNumDaConta() == numeroConta && c instanceof ContaCorrente) {
-				return ((ContaCorrente) c).sacar(valorSacado);
-			} else if (c.getNumDaConta() == numeroConta) {
+			/*
+			 * if (c.getNumDaConta() == numeroConta && c instanceof
+			 * ContaCorrente){ return ((ContaCorrente)c).sacar(valorSacado); }
+			 * else
+			 */ if (c.getNumDaConta() == numeroConta) {
 				return c.sacar(valorSacado);
 			}
 
 		}
 		return false;
 	}
-	
-	public boolean depositar(int numeroConta, double valorDepositado){
-		for (Conta c : lista){
-			if (c.getNumDaConta() == numeroConta){
+
+	public static boolean depositar(int numeroConta, double valorDepositado) {
+		for (Conta c : lista) {
+			if (c.getNumDaConta() == numeroConta) {
 				return c.depositar(valorDepositado);
 			}
 		}
 		return false;
 	}
-	
-	public String listarContas(){
-		for (Conta c : lista){
-			c.toString();
+
+	public static String listarContas() {
+		for (Conta c : lista) {
+			System.out.println(c.toString());
+			System.out.println("---------------------------");
 		}
 		return "";
-		
 	}
 
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
+
+		System.out.println("----------------BEM VINDO AO BANCO APS FINANCES----------------");
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("Digite o número correspondente a opção desejada: ");
+		System.out.println("1 - ");
 
 		sc.close();
 

@@ -29,10 +29,26 @@ public class ContaCorrente extends Conta {
 	public boolean sacar(double valorSacado) {
 
 		double aux = 0;
-		saldo -= valorSacado;
-		if (saldo <= 0 && valorSacado < limite) {
-			aux = saldo;
-			limite += aux;
+		double novoSaldo = saldo;
+		
+		if (saldo < valorSacado && saldo > 0){
+			aux = 0 - novoSaldo;
+			novoSaldo -= valorSacado;
+			valorSacado += aux;
+			if (limite >= valorSacado){
+				limite -= valorSacado;
+				saldo = novoSaldo;
+				return true;
+			}
+		} else if (saldo < valorSacado && saldo <= 0){
+			novoSaldo -= valorSacado;
+			if (limite >= valorSacado){
+				limite -= valorSacado;
+				saldo = novoSaldo;
+				return true;
+			}
+		} else if (saldo > 0 && saldo > valorSacado){
+			saldo -= valorSacado;
 			return true;
 		}
 
